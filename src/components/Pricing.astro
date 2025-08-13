@@ -1,0 +1,84 @@
+---
+import Card from './UI/Card.astro';
+import Button from './UI/Button.astro';
+import Icon from './UI/Icon.astro';
+---
+
+<section class="container mx-auto px-4 py-20">
+  <h2 class="text-4xl text-center mb-16">Тарифы</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Базовый тариф -->
+    <Card>
+      <h3 class="text-xl font-bold mb-4">Базовый</h3>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Срок внедрения 5 дней</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>1 встреча (ВКС)</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>5 часов онлайн обучения</span>
+        </li>
+      </ul>
+      <Button class="w-full">Выбрать план</Button>
+    </Card>
+    
+    <!-- Стандартный тариф -->
+    <Card highlighted>
+      <div class="absolute top-4 right-4 bg-secondary text-dark px-3 py-1 rounded-full text-sm font-bold">Популярный</div>
+      <h3 class="text-xl font-bold mb-4">Стандартный</h3>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Срок внедрения 10 дней</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>3 встречи (ВКС)</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>10 часов онлайн обучения</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Интеграция с 1С</span>
+        </li>
+      </ul>
+      <Button class="w-full">Выбрать план</Button>
+    </Card>
+    
+    <!-- Премиум тариф -->
+    <Card>
+      <h3 class="text-xl font-bold mb-4">Премиум</h3>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Срок внедрения 20 дней</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>5 встреч (ВКС)</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>20 часов онлайн обучения</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Интеграция с 1С и почтой</span>
+        </li>
+        <li class="flex items-start">
+          <Icon name="check" class="text-green-500 mt-1 mr-2" />
+          <span>Разработка кастомных отчетов</span>
+        </li>
+      </ul>
+      <Button class="w-full">Выбрать план</Button>
+    </Card>
+  </div>
+</section>

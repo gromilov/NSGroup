@@ -1,0 +1,35 @@
+---
+const { 
+  highlighted = false,
+  glow = false,
+  className = ''
+} = Astro.props;
+---
+
+<div class={`
+  relative p-8 rounded-2xl border
+  transition-all duration-300
+  ${highlighted 
+    ? 'bg-secondary/10 border-secondary/30 shadow-lg' 
+    : 'bg-light/20 border-white/10 hover:bg-light/30'
+  }
+  ${glow ? 'shadow-secondary/20' : ''}
+  ${className}
+`}>
+  <!-- Highlight badge -->
+  {highlighted && (
+    <div class="absolute top-4 right-4 bg-secondary text-dark px-3 py-1 rounded-full text-sm font-bold">
+      Популярный
+    </div>
+  )}
+  
+  <!-- Glow effect -->
+  {glow && (
+    <div class="absolute inset-0 rounded-2xl bg-secondary/10 pointer-events-none" aria-hidden="true"></div>
+  )}
+  
+  <!-- Content slot -->
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>

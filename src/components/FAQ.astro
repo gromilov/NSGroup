@@ -1,0 +1,37 @@
+---
+import Icon from './UI/Icon.astro';
+const faqItems = [
+  {
+    question: "Сколько времени занимает внедрение Битрикс24?",
+    answer: "Сроки зависят от выбранного тарифа и сложности процессов. Базовое внедрение занимает от 5 дней, комплексное - до 20 дней."
+  },
+  {
+    question: "Можно ли перенести данные из другой CRM?",
+    answer: "Да, мы можем перенести данные из большинства популярных CRM-систем."
+  },
+  {
+    question: "Какая техническая поддержка после внедрения?",
+    answer: "Все наши тарифы включают 1 месяц бесплатной поддержки. Далее можно оформить подписку на поддержку."
+  },
+  {
+    question: "Нужно ли покупать лицензии Битрикс24 отдельно?",
+    answer: "Да, лицензии приобретаются отдельно. Мы поможем подобрать оптимальный вариант лицензирования."
+  }
+];
+---
+
+<section class="container mx-auto px-4 py-20">
+  <h2 class="text-4xl text-center mb-16">Часто задаваемые вопросы</h2>
+  
+  <div class="max-w-3xl mx-auto space-y-4">
+    {faqItems.map((item, index) => (
+      <details class="group bg-light bg-opacity-20 rounded-xl p-6 hover:bg-opacity-30 transition-all">
+        <summary class="flex justify-between items-center cursor-pointer">
+          <h3 class="text-lg font-medium">{item.question}</h3>
+          <Icon name="chevron-down" class="w-5 h-5 transform group-open:rotate-180 transition-transform" />
+        </summary>
+        <p class="mt-4 opacity-80">{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

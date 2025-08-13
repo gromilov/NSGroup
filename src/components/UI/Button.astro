@@ -1,0 +1,15 @@
+---
+const { variant = 'primary', children } = Astro.props;
+---
+
+<button class={`
+  px-8 py-4 rounded-full font-medium text-sm
+  transition-all duration-300
+  ${
+    variant === 'primary' 
+      ? 'bg-secondary text-dark hover:bg-opacity-90' 
+      : 'bg-transparent border border-white border-opacity-10 hover:bg-white hover:bg-opacity-10'
+  }
+`}>
+  <slot>{children}</slot>
+</button>

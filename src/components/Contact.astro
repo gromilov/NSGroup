@@ -1,0 +1,47 @@
+---
+import Button from './UI/Button.astro';
+---
+
+<section class="container mx-auto px-4 py-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+    <div>
+      <h2 class="text-4xl mb-12">Контакты</h2>
+      
+      <div class="space-y-8">
+        <div>
+          <p class="text-sm opacity-80 mb-2">Почта</p>
+          <a href="mailto:nikolay@nsgroupp.ru" class="text-2xl hover:text-secondary transition-colors">nikolay@nsgroupp.ru</a>
+        </div>
+        
+        <div>
+          <p class="text-sm opacity-80 mb-2">Телефон</p>
+          <a href="tel:+79655840034" class="text-2xl hover:text-secondary transition-colors">+7 965 584 00 34</a>
+        </div>
+        
+        <div>
+          <p class="text-sm opacity-80 mb-2">Адрес</p>
+          <p class="text-2xl">ул. Петербургская 52, IT Park<br />Россия, РТ, Казань</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bg-light bg-opacity-20 rounded-2xl p-8 backdrop-blur-sm">
+      <h3 class="text-2xl mb-6">Запишитесь на 30-минутную консультацию</h3>
+      <p class="opacity-80 mb-8">Мы покажем как CRM будет работать в вашей компании</p>
+      
+      <form class="space-y-6">
+        <div>
+          <label for="name" class="block mb-2">Ваше имя</label>
+          <input type="text" id="name" class="w-full bg-light bg-opacity-30 border border-white border-opacity-10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+        </div>
+        
+        <div>
+          <label for="phone" class="block mb-2">Телефон</label>
+          <input type="tel" id="phone" class="w-full bg-light bg-opacity-30 border border-white border-opacity-10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary">
+        </div>
+        
+        <Button type="submit" class="w-full">Записаться на консультацию</Button>
+      </form>
+    </div>
+  </div>
+</section>

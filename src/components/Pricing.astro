@@ -2,83 +2,75 @@
 import Card from './UI/Card.astro';
 import Button from './UI/Button.astro';
 import Icon from './UI/Icon.astro';
----
 
+const tariffs = [
+  {
+    name: "Базовый",
+    price: "36 900 ₽",
+    highlighted: false,
+    features: [
+      "Срок внедрения 5 дней",
+      "1 встреча (ВКС)",
+      "5 часов онлайн обучения",
+      "Анализ отдела продаж компании и интервью с группой внедрения клиента",
+      "Приглашение сотрудников и руководителей в Битрикс24",
+      "Создание структуры Компании и настройка прав доступа",
+      "Заказы базы клиентов и товаров из Excel"
+    ]
+  },
+  {
+    name: "Расширенный",
+    price: "52 500 ₽", // Примерная цена, можно уточнить
+    highlighted: false,
+    features: [
+      "Срок внедрения 10 дней",
+      "3 встречи (ВКС)",
+      "10 часов онлайн обучения",
+      "Все опции тарифа 'Базовый'",
+      "Дополнительные настройки CRM",
+      "Интеграция с email-рассылками",
+      "Базовые отчеты по продажам"
+    ]
+  },
+  {
+    name: "Комплексный",
+    price: "68 200 ₽",
+    highlighted: false,
+    features: [
+      "Срок внедрения 20 дней",
+      "5 встреч (ВКС)",
+      "15 часов онлайн обучения",
+      "Все опции тарифа 'Базовый' и 'Расширенный'",
+      "Приглашение сотрудников и руководителей в Битрикс24",
+      "Создание структуры Компании и настройка прав доступа",
+      "Заказы базы клиентов и товаров из Excel",
+      "Анализ отдела продаж компании и интервью с группой внедрения клиента"
+    ]
+  }
+];
+---
 <section class="container mx-auto px-4 py-20">
   <h2 class="text-4xl text-center mb-16">Тарифы</h2>
   
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <!-- Базовый тариф -->
-    <Card>
-      <h3 class="text-xl font-bold mb-4">Базовый</h3>
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Срок внедрения 5 дней</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>1 встреча (ВКС)</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>5 часов онлайн обучения</span>
-        </li>
-      </ul>
-      <Button class="w-full">Выбрать план</Button>
-    </Card>
-    
-    <!-- Стандартный тариф -->
-    <Card highlighted>
-      <!-- <div class="absolute top-4 right-4 bg-secondary text-dark px-3 py-1 rounded-full text-sm font-bold">Популярный</div> -->
-      <h3 class="text-xl font-bold mb-4">Стандартный</h3>
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Срок внедрения 10 дней</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>3 встречи (ВКС)</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>10 часов онлайн обучения</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Интеграция с 1С</span>
-        </li>
-      </ul>
-      <Button class="w-full">Выбрать план</Button>
-    </Card>
-    
-    <!-- Премиум тариф -->
-    <Card>
-      <h3 class="text-xl font-bold mb-4">Премиум</h3>
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Срок внедрения 20 дней</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>5 встреч (ВКС)</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>20 часов онлайн обучения</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Интеграция с 1С и почтой</span>
-        </li>
-        <li class="flex items-start">
-          <Icon name="check" class="text-green-500 mt-1 mr-2" />
-          <span>Разработка кастомных отчетов</span>
-        </li>
-      </ul>
-      <Button class="w-full">Выбрать план</Button>
-    </Card>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    {
+      tariffs.map((tariff) => (
+        <Card highlighted={tariff.highlighted}>
+          <h3 class="text-xl font-bold mb-4">{tariff.name}</h3>
+          <p class="text-2xl font-bold mb-6">{tariff.price}</p>
+          <ul class="space-y-4 mb-8">
+            {
+              tariff.features.map((feature) => (
+                <li class="flex items-start">
+                  <Icon name="check" class="text-green-500 mt-1 mr-2" />
+                  <span>{feature}</span>
+                </li>
+              ))
+            }
+          </ul>
+          <Button class="w-full">Выбрать план</Button>
+        </Card>
+      ))
+    }
   </div>
 </section>

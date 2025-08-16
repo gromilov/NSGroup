@@ -262,3 +262,15 @@ body {
 .bg-blur {
   backdrop-filter: blur(4px);
 }
+
+.bg-dark-blue {
+  background-color: #173550;
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.aspect-square {
+  aspect-ratio: 1/1;
+}

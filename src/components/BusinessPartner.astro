@@ -1,0 +1,34 @@
+---
+import Icon from './UI/Icon.astro';
+---
+
+<section class="container mx-auto px-4 py-20">
+  <div class="grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h2 class="text-4xl md:text-5xl font-medium mb-6 leading-tight">
+        Мы являемся бизнес <br>
+        партнером битрикса <br>
+        с 2015 года
+      </h2>
+      <p class="text-lg opacity-80 mb-8 max-w-lg">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+    </div>
+
+    <div class="flex item-center w-full relative text-center">
+      <!-- Изображение вместо серого блока -->
+      <img 
+        src="/images/bitrix-partner.png" 
+        alt="Партнер битрикс с 2015 года" 
+        class="w-[364px] h-[517px] rounded-lg mx-auto"
+      />
+      
+      <!-- Декоративные круги -->
+      <div class="absolute inset-0 -z-10 flex items-center justify-center">
+        <div class="absolute w-[457px] h-[457px] rounded-full border border-opacity-20 border-teal-400"></div>
+        <div class="absolute w-[615px] h-[615px] rounded-full border border-opacity-10 border-teal-400"></div>
+      </div>
+    </div>
+  </div>
+</section>

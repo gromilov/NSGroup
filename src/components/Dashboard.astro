@@ -4,42 +4,34 @@ import Icon from './UI/Icon.astro';
 const features = [
   {
     title: "Бизнес-процессы",
-    description: "Автоматизация ключевых процессов компании",
     image: "/images/business-processes.png"
   },
   {
     title: "Статистика и аналитика",
-    description: "Полная видимость всех показателей бизнеса",
     image: "/images/analytics.png"
   },
   {
     title: "Телефония",
-    description: "Интеграция с телефонией и запись звонков",
     image: "/images/telephony.png"
   },
   {
     title: "Документооборот",
-    description: "Управление документами и электронный архив",
     image: "/images/documents.png"
   },
   {
     title: "Автоматизация",
-    description: "Роботы и автоматические сценарии работы",
     image: "/images/automation.png"
   },
   {
     title: "Складской учет",
-    description: "Контроль остатков и движения товаров",
     image: "/images/warehouse.png"
   },
   {
     title: "Контроль задач и сделок",
-    description: "Управление проектами и сделками",
     image: "/images/tasks.png"
   },
   {
     title: "Корпоративная почта",
-    description: "Единая почтовая система компании",
     image: "/images/mail.png"
   }
 ];
@@ -55,22 +47,21 @@ const features = [
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     {features.map((feature, index) => (
-      <div class="bg-dark-blue bg-opacity-70 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden" key={index}>
+      <div class="bg-dark-blue bg-opacity-70 rounded-2xl pl-6 pt-6 backdrop-blur-sm relative overflow-hidden" key={index}>
         <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-10"></div>
         
         <div class="relative z-10">
           <h3 class="text-lg font-medium mb-4">{feature.title}</h3>
-          <div class="aspect-square w-full rounded-xl overflow-hidden mb-4">
+          <div class="w-full flex rounded-tl-3xl overflow-hidden">
             <img 
               src={feature.image} 
               alt={feature.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover flex"
               width={276}
               height={276}
               loading="lazy"
             />
           </div>
-          {/* <p class="text-sm opacity-80">{feature.description}</p> */}
         </div>
       </div>
     ))}

@@ -58,19 +58,24 @@ const tariffs = [
     {
       tariffs.map((tariff) => (
         <Card highlighted={tariff.highlighted}>
-          <h3 class="md:text-xl  text-base font-bold mb-4">{tariff.name}</h3>
+          <h3 class="md:text-xl text-base font-bold mb-4">{tariff.name}</h3>
           <p class="text-2xl font-bold mb-6">{tariff.price}</p>
           <ul class="space-y-4 mb-8">
             {
-              tariff.features.map((feature) => (
-                <li class="flex items-start">
-                  <Icon name="check" class="text-green-500 mt-1 mr-2" />
-                  <span>{feature}</span>
-                </li>
+              tariff.features.map((feature, index) => (
+                <>
+                  {index === 3 && <li class="border-t border-white/10 hover:bg-light/30 pt-4 mt-4"></li>}
+                  <li class="flex items-start">
+                    {index >= 3 && <span class="text-[#3FBAE2] min-w-[24px] mt-1 mr-2"><Icon name="check" class="text-green-500" /></span>}
+                    <span>{feature}</span>
+                  </li>
+                </>
               ))
             }
           </ul>
-          <Button class="w-full">Выбрать план</Button>
+          <div class="mt-auto">
+              <Button class="w-full">Выбрать план</Button>
+          </div>
         </Card>
       ))
     }

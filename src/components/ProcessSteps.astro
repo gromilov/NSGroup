@@ -1,35 +1,44 @@
+---
+// Данные для этапов
+const steps = [
+  {
+    number: "1",
+    text: "Подключаемся к проекту на любом этапе, внедрим битрикс с нуля под ключ или перенесем с другой CRM"
+  },
+  {
+    number: "2",
+    text: "Разберемся в ваших бизнес-процессах и систематизируем их, каждый отдел компании будет работать как единый организм"
+  },
+  {
+    number: "3",
+    text: "Выстроим воронку и пропишем регламенты для каждого процесса, научим сотрудников пользоваться CRM"
+  }
+];
+---
+
 <section class="px-4 md:px-0">
-  <div  class="container mx-auto md:px-4 py-6 bg-[#173550] bg-opacity-70 rounded-3xl backdrop-blur-sm border border-white border-opacity-10">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8  mx-auto">
-    <!-- Первый этап -->
-    <div class="relative">
-      <div class="absolute top-4 left-7 w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10">
-        <span class="text-white md:text-xl  text-base">1</span>
-      </div>
-      <div class="pt-20 px-4 md:px-8">
-        <p class="text-white mb-4">Подключаемся к проекту на любом этапе, внедрим битрикс с нуля под ключ или перенесем с другой CRM</p>
-      </div>
+  <div class="container mx-auto md:px-4 py-6 bg-[#173550]/70 rounded-3xl backdrop-blur-lg border border-white/10 shadow-lg">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mx-auto">
+      {steps.map((step, index) => (
+        <div class={`relative ${index > 0 ? 'md:border-l border-white/10' : ''}`}>
+          <div class="absolute top-4 left-4 md:left-7 w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10 backdrop-blur-sm">
+            <span class="text-white md:text-xl text-base">{step.number}</span>
+          </div>
+          <div class="pt-20 px-4 md:px-8">
+            <p class="text-white mb-4">{step.text}</p>
+          </div>
+        </div>
+      ))}
     </div>
-    
-    <!-- Второй этап -->
-    <div class="relative md:border-l border-white border-opacity-10">
-      <div class="absolute top-4 left-7 w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10">
-        <span class="text-white md:text-xl  text-base">2</span>
-      </div>
-      <div class="pt-20  px-4 md:px-8">
-        <p class="text-white mb-4">Разберемся в ваших бизнес-процессах и систематизируем их, каждый отдел компании будет работать как единый организм</p>
-      </div>
-    </div>
-    
-    <!-- Третий этап -->
-    <div class="relative md:border-l border-white border-opacity-10">
-      <div class="absolute top-4 left-7 w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10">
-        <span class="text-white md:text-xl  text-base">3</span>
-      </div>
-      <div class="pt-20  px-4 md:px-8">
-        <p class="text-white mb-4">Выстроим воронку и пропишем регламенты для каждого процесса, научим сотрудников пользоваться CRM</p>
-      </div>
-    </div>
-  </div>
   </div>
 </section>
+
+<style>
+  /* Дополнительные стили для стеклянного эффекта */
+  .container {
+    background: rgba(23, 53, 80, 0.7);
+    box-shadow: inset 0px -1px 300px 0px rgb(25 106 115 / 78%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+</style>

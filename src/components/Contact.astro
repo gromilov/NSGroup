@@ -3,8 +3,8 @@ import Button from './UI/Button.astro';
 ---
 
 <section class="container mx-auto px-4 py-10 md:py-20">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-    <div>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+    <div class="lg:col-span-1">
       <h2 class="text-2xl md:text-4xl mb-12">Контакты</h2>
       
       <div class="space-y-8">
@@ -25,26 +25,15 @@ import Button from './UI/Button.astro';
       </div>
     </div>
     
-    <div class="bg-light bg-opacity-20 rounded-2xl md:p-8 backdrop-blur-sm">
-      <iframe 
-        class="rounded-2xl"
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a6ba2ca361b4e0d8ec0c9cdabeb5752ab9e9eeb7577abccaecda4dca984a50f&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
-      <!-- <h3 class="text-2xl mb-6">Запишитесь на 30-минутную консультацию</h3>
-      <p class="opacity-60 mb-8">Мы покажем как CRM будет работать в вашей компании</p>
-      
-      <form class="space-y-6">
-        <div>
-          <label for="name" class="block mb-2">Ваше имя</label>
-          <input type="text" id="name" class="w-full bg-light bg-opacity-30 border border-white border-opacity-10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary">
-        </div>
-        
-        <div>
-          <label for="phone" class="block mb-2">Телефон</label>
-          <input type="tel" id="phone" class="w-full bg-light bg-opacity-30 border border-white border-opacity-10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-secondary">
-        </div>
-        
-        <Button type="submit" class="w-full">Записаться на консультацию</Button>
-      </form> -->
+    <div class="lg:col-span-2 bg-light bg-opacity-20 rounded-2xl backdrop-blur-sm h-full">
+      <div style="position: relative; height: 100%;">
+        <iframe 
+          class="rounded-2xl opacity-50 w-full h-full min-h-[400px]"
+          src="https://yandex.ru/map-widget/v1/?um=constructor%3A7a6ba2ca361b4e0d8ec0c9cdabeb5752ab9e9eeb7577abccaecda4dca984a50f&amp;source=constructor" 
+          frameborder="0"
+          style="filter: invert(1) hue-rotate(170deg) brightness(3) contrast() saturate(1)"
+        ></iframe>
+      </div>
     </div>
   </div>
 </section>

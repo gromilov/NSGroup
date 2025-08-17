@@ -1,20 +1,24 @@
----
-import Icon from './UI/Icon.astro';
----
-
 <section class="container mx-auto px-4 py-10 md:py-20">
   <h2 class="text-2xl md:text-4xl text-center mb-16 max-w-3xl mx-auto">За 3 ключевых этапа мы наведем порядок в вашем бизнесе с помощью внедрения CRM</h2>
   
   <div class="relative">
-    <div class="absolute top-1/2 left-0 right-0 h-0.5 bg-white bg-opacity-10 -z-10"></div>
+    <div class="relative">
+  <!-- Линия от края до края экрана -->
+  <div class="absolute left-0 right-0 top-1/2 h-px bg-white bg-opacity-10 -z-10"></div>
+  
+  <!-- Номер в кружке -->
+  
+</div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Этап 1 -->
-      <div class="flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-full bg-light bg-opacity-20 flex items-center justify-center mb-6">
-          <span class="md:text-xl  text-base">1</span>
-        </div>
-        <h3 class="md:text-xl  text-base mb-4">Аналитический сбор данных и написание ТЗ</h3>
+       
+          <div class="flex flex-col items-center text-center">
+            <div class="relative -top-6 bg-number w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10 mx-auto">
+              <span class="text-white">1</span>
+            </div>
+         
+        <h3 class="md:text-xl text-base mb-4">Аналитический сбор данных и написание ТЗ</h3>
         <p class="text-sm opacity-60">
           На первом этапе собираются данные о деятельности предприятия. Наши эксперты разбираются в бизнес-процессах предприятия, выявляют его основные запросы и потребности в автоматизации.
         </p>
@@ -22,10 +26,10 @@ import Icon from './UI/Icon.astro';
       
       <!-- Этап 2 -->
       <div class="flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-full bg-light bg-opacity-20 flex items-center justify-center mb-6">
-          <span class="md:text-xl  text-base">2</span>
-        </div>
-        <h3 class="md:text-xl  text-base mb-4">Настройка портала</h3>
+        <div class="relative -top-6 bg-number  w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10 mx-auto">
+    <span class="text-white">2</span>
+  </div>
+        <h3 class="md:text-xl text-base mb-4">Настройка портала</h3>
         <p class="text-sm opacity-60">
           Затем мы переходим к настройке продукта в соответствии с основными запросами и ранее написанным ТЗ. При этом мы осуществляем как базовые, так и нестандартные настройки.
         </p>
@@ -33,10 +37,10 @@ import Icon from './UI/Icon.astro';
       
       <!-- Этап 3 -->
       <div class="flex flex-col items-center text-center">
-        <div class="w-12 h-12 rounded-full bg-light bg-opacity-20 flex items-center justify-center mb-6">
-          <span class="md:text-xl  text-base">3</span>
-        </div>
-        <h3 class="md:text-xl  text-base mb-4">Обучим сотрудников</h3>
+        <div class="relative -top-6 bg-number  w-12 h-12 rounded-full bg-white bg-opacity-5 flex items-center justify-center border border-white border-opacity-10 mx-auto">
+    <span class="text-white">3</span>
+  </div>
+        <h3 class="md:text-xl text-base mb-4">Обучим сотрудников</h3>
         <p class="text-sm opacity-60">
           Любая настройка обречена на провал, если после неё кадры не будут работать в программе. Наша цель — чтобы вы пользовались настроенным функционалом Битрикс24.
         </p>

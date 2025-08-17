@@ -21,10 +21,10 @@ const features = [
 ];
 ---
 
-<section class="container mx-auto px-4 py-20">
+<section class="container mx-auto px-4 py-10 md:py-20">
   <div class="text-center mb-20 max-w-3xl mx-auto">
-    <h2 class="text-4xl mb-6">Уже через месяц вы получите полный порядок и контроль над каждым процессом в вашей компании</h2>
-    <p class="text-xl opacity-80 max-w-4xl mx-auto">
+    <h2 class="text-2xl md:text-4xl mb-6">Уже через месяц вы получите полный порядок и контроль над каждым процессом в вашей компании</h2>
+    <p class="md:text-xl  text-base opacity-60 max-w-4xl mx-auto">
       Мы знаем, что ваша истинная задача не просто внедрить битрикс24, а обеспечить максимальный рост объемов продаж и свободу от операционки
     </p>
   </div>
@@ -32,12 +32,12 @@ const features = [
   {features.map((feature, index) => (
     <div class="grid md:grid-cols-2 gap-12 mb-12" key={index}>
       <div class="bg-light bg-opacity-20 p-8 rounded-2xl backdrop-blur-sm">
-        <h3 class="text-xl mb-4">{feature.problem}</h3>
+        <h3 class="md:text-xl  text-base mb-4">{feature.problem}</h3>
         <Icon name="cross" class="text-red-500" />
       </div>
       
       <div>
-        <h3 class="text-xl mb-4">{feature.solution}</h3>
+        <h3 class="md:text-xl  text-base mb-4">{feature.solution}</h3>
         <Icon name="check" class="text-green-500" />
       </div>
     </div>

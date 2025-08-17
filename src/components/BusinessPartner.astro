@@ -2,15 +2,15 @@
 import Icon from './UI/Icon.astro';
 ---
 
-<section class="container mx-auto px-4 py-20">
+<section class="container mx-auto px-4 py-10 md:py-20">
   <div class="grid md:grid-cols-2 gap-8 items-center">
     <div>
-      <h2 class="text-4xl md:text-5xl font-medium mb-6 leading-tight">
+      <h2 class="text-2xl md:text-4xl md:text-5xl font-medium mb-6 leading-tight">
         Мы являемся бизнес <br>
         партнером битрикса <br>
         с 2015 года
       </h2>
-      <p class="text-lg opacity-80 mb-8 max-w-lg">
+      <p class="text-base md:text-lg opacity-60 mb-8 max-w-lg">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
@@ -25,7 +25,7 @@ import Icon from './UI/Icon.astro';
       />
       
       <!-- Декоративные круги -->
-      <div class="absolute inset-0 -z-10 flex items-center justify-center">
+      <div class="absolute inset-0 -z-10 flex items-center justify-center hidden md:block hidden md:block">
         <div class="absolute w-[457px] h-[457px] rounded-full border border-opacity-20 border-teal-400"></div>
         <div class="absolute w-[615px] h-[615px] rounded-full border border-opacity-10 border-teal-400"></div>
       </div>

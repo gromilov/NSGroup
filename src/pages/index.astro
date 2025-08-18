@@ -14,23 +14,68 @@ import BusinessPartner from '../components/BusinessPartner.astro';
 import Calculation from '../components/Calculation.astro';
 import Reasons from '../components/Reasons.astro';
 import Carousel from '../components/Carousel.astro';
-
-
+import Banner from '../components/Banner.astro';
 ---
 
 <Layout>
-  <Header />
-  <Hero />
-  <ProcessSteps />
-  <Features />
-  <Dashboard />
-  <Calculation />
-  <Process />
-  <BusinessPartner />
-  <Pricing />
-  <Reasons />
-  <Carousel />
-  <FAQ />
-  <Contact />
-  <Footer />
+  <div class="pt-24 max-w-[100%] overflow-x-hidden relative"> <!-- Отступ для фиксированного меню -->
+    <Header />
+    
+    <div id="main">
+      <Hero />
+    </div>
+    
+    <div id="process">
+      <ProcessSteps />
+    </div>
+    
+    <div id="benefits">
+      <Features />
+    </div>
+    
+    <div>
+      <Dashboard />
+    </div>
+    
+    <div id="calculation">
+      <Calculation />
+    </div>
+    
+    <div>
+      <Process />
+    </div>
+    
+    <div>
+      <BusinessPartner />
+    </div>
+    
+    <div id="pricing">
+      <Pricing />
+    </div>
+    
+    <div>
+      <Reasons />
+    </div>
+    
+    <div id="cases">
+      <Carousel />
+    </div>
+    
+    <div>
+      <FAQ />
+    </div>
+
+    <div>
+      <Banner />
+    </div>
+   
+    
+    <div id="contacts">
+      <Contact />
+    </div>
+    
+    <div>
+      <Footer />
+    </div>
+  </div>
 </Layout>

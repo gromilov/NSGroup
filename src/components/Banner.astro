@@ -1,0 +1,54 @@
+---
+import Button from './UI/Button.astro';
+import Icon from './UI/Icon.astro';
+---
+
+<section class="container mx-auto px-4 py-10 md:py-20">
+  <div class="grid md:grid-cols-2 gap-8 items-center px-4 py-8 md:p-8 rounded-3xl bg-[#173550] bg-opacity-60 backdrop-blur-sm">
+    <div class="relative">
+      <!-- Текст -->
+      <h2 class="text-2xl md:text-4xl mb-6 leading-tight text-white">
+        Запишитесь на 30-минутную <br>
+        консультацию в зуме, и мы <br>
+        покажем как CRM будет <br>
+        работать в вашей компании
+      </h2>
+      
+      <!-- Пункты списка -->
+      <ul class="space-y-4 mb-8 text-white">
+        <li class="flex items-start gap-4">
+          <span class="text-[#3FBAE2] min-w-[24px] mt-1 mr-2"><Icon name="check" class="text-green-500" /></span>
+          <span>Определим слабые места и расскажем как их усилить</span>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-[#3FBAE2] min-w-[24px] mt-1 mr-2"><Icon name="check" class="text-green-500" /></span>
+          <span>Продемонстрируем работу идеальной CRM</span>
+        </li>
+        <li class="flex items-start gap-4">
+          <span class="text-[#3FBAE2] min-w-[24px] mt-1 mr-2"><Icon name="check" class="text-green-500" /></span>
+          <span>Подготовим для вас решение по внедрению</span>
+        </li>
+      </ul>
+      
+      <!-- Кнопка -->
+      <Button class="bg-[#2FC6F5] hover:bg-[#2FF5E3] text-[#11100C] px-8 py-4 rounded-full font-medium">
+        Записаться на консультацию
+      </Button>
+    </div>
+    
+    <div class="relative">
+      <!-- Декоративный элемент -->
+      <div class="md:absolute right-0 -bottom-10 w-[492px] h-[715px] bg-[#2FF5E3] bg-opacity-40 rounded-full blur-[160px] hidden md:block -z-10"></div>
+      
+      <!-- Картинка -->
+      <img 
+        src="/images/banner.png" 
+        alt="Демонстрация работы CRM" 
+        class="w-full h-auto rounded-3xl -mb-8"
+        width="600"
+        height="486"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

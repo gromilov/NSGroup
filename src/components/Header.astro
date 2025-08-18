@@ -1,8 +1,18 @@
 ---
 import Button from './UI/Button.astro';
+
+// Данные для меню
+const menuItems = [
+  { id: 'benefits', title: 'Выгоды продукта' },
+  { id: 'calculation', title: 'Расчет стоимости' },
+  { id: 'process', title: 'Процесс работы' },
+  { id: 'pricing', title: 'Тарифы' },
+  { id: 'cases', title: 'Кейсы' },
+  { id: 'contacts', title: 'Контакты' }
+];
 ---
 
-<header class="container mx-auto py-6 px-4">
+<header class="container mx-auto py-6 px-4 fixed top-0 left-0 right-0 z-50 bg-[#102A42] bg-opacity-90 backdrop-blur-sm">
   <div class="flex items-center justify-between">
     <!-- Логотип -->
     <div class="flex items-center">
@@ -11,17 +21,20 @@ import Button from './UI/Button.astro';
     
     <!-- Десктопное меню (скрыто на мобильных) -->
     <nav class="hidden md:flex items-center space-x-6 bg-[#173550] bg-opacity-70 py-4 px-8 rounded-3xl backdrop-blur-sm border border-white border-opacity-10">
-      <a href="#" class="text-sm hover:text-secondary">Выгоды продукта</a>
-      <a href="#" class="text-sm hover:text-secondary">Расчет стоимости</a>
-      <a href="#" class="text-sm hover:text-secondary">Процесс работы</a>
-      <a href="#" class="text-sm hover:text-secondary">Тарифы</a>
-      <a href="#" class="text-sm hover:text-secondary">Кейсы</a>
-      <a href="#" class="text-sm hover:text-secondary">Контакты</a>
+      {menuItems.map(item => (
+        <a 
+          href={`#${item.id}`} 
+          class="text-sm hover:text-secondary"
+        >
+          {item.title}
+        </a>
+      ))}
     </nav>
     
     <!-- Кнопка консультации (скрыта на мобильных) -->
-     <div class="hidden md:block"> <Button variant="primary">Заказать консультацию</Button></div>
-   
+    <div class="hidden md:block">
+      <Button variant="primary">Заказать консультацию</Button>
+    </div>
     
     <!-- Бургер-меню (только для мобильных) -->
     <button class="md:hidden flex flex-col space-y-1.5" id="burger-button">
@@ -34,17 +47,19 @@ import Button from './UI/Button.astro';
   <!-- Мобильное меню (скрыто по умолчанию) -->
   <div class="md:hidden hidden bg-[#173550] bg-opacity-90 backdrop-blur-sm py-4 px-6 rounded-xl mt-4 border border-white border-opacity-10" id="mobile-menu">
     <nav class="flex flex-col space-y-4">
-      <a href="#" class="text-sm hover:text-secondary">Выгоды продукта</a>
-      <a href="#" class="text-sm hover:text-secondary">Расчет стоимости</a>
-      <a href="#" class="text-sm hover:text-secondary">Процесс работы</a>
-      <a href="#" class="text-sm hover:text-secondary">Тарифы</a>
-      <a href="#" class="text-sm hover:text-secondary">Кейсы</a>
-      <a href="#" class="text-sm hover:text-secondary">Контакты</a>
+      {menuItems.map(item => (
+        <a 
+          href={`#${item.id}`} 
+          class="text-sm hover:text-secondary"
+          onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+        >
+          {item.title}
+        </a>
+      ))}
     </nav>
-    <div  class="mt-4 w-full">
+    <div class="mt-4 w-full">
       <Button variant="primary">Заказать консультацию</Button>
     </div>
-    
   </div>
 </header>
 

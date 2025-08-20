@@ -17,6 +17,8 @@ import Carousel from '../components/Carousel.astro';
 import Banner from '../components/Banner.astro';
 import FormModal from '../components/FormModal.astro';
 
+//  Контент 
+import PrivacyPolicy from '../content/privacy-policy.md';
 ---
 
 <Layout>
@@ -80,6 +82,8 @@ import FormModal from '../components/FormModal.astro';
       <Footer />
     </div>
 
-    <FormModal  id="form-modal" />
+    <FormModal  id="privacy-policy">
+      <PrivacyPolicy />
+    </FormModal>
   </div>
 </Layout>

@@ -1,109 +1,178 @@
 ---
-// FormModal.astro
-const { className = '' } = Astro.props;
+const { className = '', id = 'form-modal' } = Astro.props;
 ---
 
-<!-- Изначально окно скрыто с помощью opacity-0 и pointer-events-none -->
+<!-- Убрал overflow-y-auto из основного контейнера, добавил его во внутренний контент -->
 <div
-  id="form-modal"
+  id={id}
   class={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none ${className}`}
   aria-hidden="true"
   aria-modal="true"
   role="dialog"
+  data-modal-id={id}
 >
   <!-- Overlay -->
   <div
     class="absolute inset-0 bg-black/50 backdrop-blur-sm modal-overlay"
   ></div>
 
-  <!-- Modal content -->
-  <div class="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden modal-content text-black">
-    <div class="p-6">
+  <!-- Modal content с прокруткой -->
+  <div class="relative z-10 w-full max-w-xl bg-white rounded-2xl shadow-xl modal-content text-black my-8 max-h-[90vh] overflow-hidden flex flex-col">
+    <!-- Контент с прокруткой -->
+    <div class="overflow-y-auto p-6">
       <!-- Close button -->
       <button
-        class="absolute  top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors modal-close"
+        class="sticky top-0 float-right mb-2 text-gray-400 hover:text-gray-600 transition-colors modal-close bg-white rounded-full p-1 z-20"
         aria-label="Закрыть"
-        id="modal-close"
+        data-modal-close={id}
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
 
-      ... содержимое формы ...
+      <!-- Markdown контент -->
+      <div class="prose max-w-none clear-both">
+        <slot />
+      </div>
     </div>
   </div>
 </div>
 
 <script is:inline>
 // Глобальные функции для управления модальным окном
-window.modalActions = {
-  openModal: () => {
-    const modal = document.getElementById('form-modal');
-    modal.classList.remove('opacity-0', 'pointer-events-none');
-    modal.classList.add('opacity-100');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden'; // Блокируем скролл
-    document.dispatchEvent(new CustomEvent('modalOpened'));
-  },
+window.modalActions = window.modalActions || {};
 
-  closeModal: () => {
-    const modal = document.getElementById('form-modal');
-    modal.classList.add('opacity-0', 'pointer-events-none');
-    modal.classList.remove('opacity-100');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = ''; // Возвращаем скролл
-    document.dispatchEvent(new CustomEvent('modalClosed'));
-  }
+// Универсальные функции
+window.modalActions.openModal = (modalId) => {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  
+  modal.classList.remove('opacity-0', 'pointer-events-none');
+  modal.classList.add('opacity-100');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  document.dispatchEvent(new CustomEvent('modalOpened', { detail: { id: modalId } }));
+};
+
+window.modalActions.closeModal = (modalId) => {
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
+  
+  modal.classList.add('opacity-0', 'pointer-events-none');
+  modal.classList.remove('opacity-100');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  document.dispatchEvent(new CustomEvent('modalClosed', { detail: { id: modalId } }));
 };
 
 // Инициализация после загрузки DOM
 document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('form-modal');
-  const closeButton = document.getElementById('modal-close');
-
-
-
   // Делегирование событий для кнопок открытия
   document.body.addEventListener('click', (e) => {
-    if (e.target.closest('.open-form')) {
+    const openButton = e.target.closest('[data-modal-id]');
+    if (openButton) {
       e.preventDefault();
-      window.modalActions.openModal();
+      const modalId = openButton.dataset.modalId;
+      window.modalActions.openModal(modalId);
     }
   });
 
-  // Закрытие по клику на оверлей или кнопку закрытия
-  modal.addEventListener('click', (e) => {
-    // Используем closest для правильного определения клика на крестик
-    if (e.target.closest('.modal-close') || e.target.matches('.modal-overlay')) {
-      window.modalActions.closeModal();
+  // Делегирование событий для кнопок закрытия
+  document.body.addEventListener('click', (e) => {
+    const closeButton = e.target.closest('[data-modal-close]');
+    if (closeButton) {
+      e.preventDefault();
+      const modalId = closeButton.dataset.modalClose;
+      window.modalActions.closeModal(modalId);
     }
   });
 
-// Закрытие по клику на оверлей или кнопку закрытия
-  closeButton.addEventListener('click', (e) => {
-    // Используем closest для правильного определения клика на крестик
-    if (e.target.closest('.modal-close') || e.target.matches('.modal-overlay')) {
-      window.modalActions.closeModal();
+  // Закрытие по клику на оверлей
+  document.body.addEventListener('click', (e) => {
+    if (e.target.matches('.modal-overlay')) {
+      const modal = e.target.closest('[data-modal-id]');
+      if (modal) {
+        const modalId = modal.dataset.modalId;
+        window.modalActions.closeModal(modalId);
+      }
     }
   });
 
   // Закрытие по ESC
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !modal.classList.contains('pointer-events-none')) {
-      window.modalActions.closeModal();
+    if (e.key === 'Escape') {
+      // Закрываем все открытые модальные окна
+      const openModals = document.querySelectorAll('[aria-hidden="false"][data-modal-id]');
+      openModals.forEach(modal => {
+        const modalId = modal.dataset.modalId;
+        window.modalActions.closeModal(modalId);
+      });
     }
   });
 
   // Предотвращаем закрытие при клике на содержимое модалки
-  modal.querySelector('.modal-content').addEventListener('click', (e) => {
-    e.stopPropagation();
+  document.body.addEventListener('click', (e) => {
+    if (e.target.closest('.modal-content')) {
+      e.stopPropagation();
+    }
   });
 });
 </script>
+
 <style is:global>
-/* Плавная анимация для всего модального окна */
-#form-modal {
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+/* Стили для скролла */
+.modal-content [class*="overflow-y-auto"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content [class*="overflow-y-auto"]::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content [class*="overflow-y-auto"]::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.modal-content [class*="overflow-y-auto"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Добавьте в ваш CSS */
+.prose {
+  max-width: none;
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.prose h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  color: #2d3748;
+}
+
+.prose p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.prose ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+/* Дополнительные стили для модального окна */
+.modal-content {
+  max-height: 90vh;
 }
 </style>

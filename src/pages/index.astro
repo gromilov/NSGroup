@@ -15,6 +15,10 @@ import Calculation from '../components/Calculation.astro';
 import Reasons from '../components/Reasons.astro';
 import Carousel from '../components/Carousel.astro';
 import Banner from '../components/Banner.astro';
+import FormModal from '../components/FormModal.astro';
+
+//  Контент 
+import PrivacyPolicy from '../content/privacy-policy.md';
 ---
 
 <Layout>
@@ -77,5 +81,9 @@ import Banner from '../components/Banner.astro';
     <div>
       <Footer />
     </div>
+
+    <FormModal  id="privacy-policy">
+      <PrivacyPolicy />
+    </FormModal>
   </div>
 </Layout>
